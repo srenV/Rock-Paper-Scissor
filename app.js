@@ -9,12 +9,15 @@ const scissor = document.querySelector('.scissor')
 const lizard = document.querySelector('.lizardField')
 const spock = document.querySelector('.spockField')
 
+//Sections
 const beforeWrapper = document.getElementById('beforeWrapper')
 const afterWrapper = document.getElementById('afterWrapper')
 const resultField = document.querySelector('#resultContainer')
+
 //player result field
 const playerChoiceResult = document.getElementById('playerChoiceResult')
 const playerChoiceButton = document.getElementById('playerChoiceButton')
+
 //computer result field
 const computerChoiceResult = document.getElementById('computerChoiceResult')
 const computerChoiceButton = document.getElementById('computerChoiceButton')
@@ -22,6 +25,9 @@ const computerChoiceButton = document.getElementById('computerChoiceButton')
 const fields = document.querySelectorAll('.innerButton')
 // Scoring
 const currentScore = document.getElementById('currentScore')
+
+//Rules
+const rules = document.getElementById('rules')
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // The Main-Logic for the Oponent
 // Each possible output stands for one move (0 = Paper | 1 = Scissor | 2 = Rock)
@@ -125,6 +131,18 @@ function playAgain(){
     afterWrapper.style.display = 'none'
     beforeWrapper.style.display = 'grid'
 }
+
+rules.addEventListener('click', () => {
+    beforeWrapper.style.display = 'none'
+    const rulesBtn = document.getElementById('rulesOpen')
+
+    if(rulesBtn.classList.contains('active')){
+        rulesBtn.classList.remove('active')
+        beforeWrapper.style.display = 'grid'
+    }else{
+        rulesBtn.classList.add('active')
+    }
+})
 
 // // Just a little tester because today my brain isn't braining right
 // function testRand() {

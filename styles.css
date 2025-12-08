@@ -118,7 +118,6 @@ header{
     top: 50%;
     transform: translate(-50%, -50%);
     transition: all 1s ease;
-    pointer-events: all;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -235,6 +234,24 @@ footer{
     cursor: pointer;
     position: absolute;
    bottom: 4rem;
+}
+
+#rulesOpen{
+    background-image: url(./images/image-rules.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 85vw;
+    height: 85vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#rulesOpen.active{
+    display: flex;
 }
 
 
