@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+
+    <!-- 
+  Score
+  Rules
+
+  You Picked
+  The House Picked
+
+  You Win
+  You Lose
+
+  Play Again -->
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <header class="scoreContainer">
+      <div id="leftScoreDiv">
+        <span>Rock</span>
+        <span>Paper</span>
+        <span>Scissors</span>
+      </div>
+
+      <div id="rightScoreDiv">
+        <p>Score</p>
+        <span id="currentScore">0</span>
+      </div>
+    </header>
+    <main>
+      <div id="beforeWrapper">
+        <div class="button blue">
+          <button class="innerButton paper" value="0"></button>
+        </div>
+
+        <div class="button yellow">
+          <button class="innerButton scissor" value="1"></button>
+        </div>
+
+        <div class="button red">
+          <button class="innerButton rock" value="2"></button>
+        </div>
+
+      </div>
+
+      <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+      <div class="afterWrapper" id="afterWrapper">
+        <div class="afterBtnWrapper">
+          <div id="playerResult" class="result">
+            <div class="button resultButton" id="playerChoiceResult">
+              <button class="innerButton rBtn" id="playerChoiceButton"></button>
+            </div>
+            <span>You Picked</span>
+          </div>
+
+
+          <div id="computerResult" class="result">
+            <div class="button resultButton" id="computerChoiceResult">
+              <button class="innerButton rBtn" id="computerChoiceButton"></button>
+            </div>
+            <span>The House Picked</span>
+          </div>
+        </div>
+        <button onclick="playAgain()" id="playAgainBtn">Play again</button>
+      </div>
+    </main>
+
+    <footer>
+      <div id="rules">
+        <span>Rules</span>
+      </div>
+
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://github.com/srenV">Soeren Timo Voigt</a>.
+      </div>
+    </footer>
+  </body>
+</html>
