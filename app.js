@@ -23,8 +23,12 @@ const computerChoiceResult = document.getElementById('computerChoiceResult')
 const computerChoiceButton = document.getElementById('computerChoiceButton')
 
 const fields = document.querySelectorAll('.innerButton')
+
+
 // Scoring
+let playerCount = parseInt(localStorage.getItem('playerScore')) || 0;
 const currentScore = document.getElementById('currentScore')
+currentScore.textContent = playerCount;
 
 //Rules
 const rules = document.getElementById('rules')
@@ -72,9 +76,6 @@ function checkWin(playerInput){
     computerChoiceResult.classList.remove('blue', 'yellow', 'red');
     computerChoiceButton.classList.remove('paper', 'scissor', 'rock');
 
-    //for later score comparison
-    let playerCount = 0
-    let computerCount = 0
 
     switch (result) {
         case 0:
@@ -85,14 +86,15 @@ function checkWin(playerInput){
             // playerWin()
             console.log('playerWin')
             playerCount++
-            currentScore.innerHTML++
+            currentScore.textContent = playerCount;
+            localStorage.setItem('playerScore', playerCount)
             break
         case 2:
             // computerWin()
             console.log('computerWin')
             break
     }
-
+    //changes the button collors and inner images for the result pages
     switch(computerChoice){
         case 0:
             computerChoiceResult.classList.add('blue')
@@ -124,14 +126,15 @@ function checkWin(playerInput){
     }
     afterWrapper.style.display = 'flex'
     beforeWrapper.style.display = 'none'
-    
 }
 
+//simple play Again Function
 function playAgain(){
     afterWrapper.style.display = 'none'
     beforeWrapper.style.display = 'grid'
 }
 
+//toggles the rules menu
 rules.addEventListener('click', () => {
     beforeWrapper.style.display = 'none'
     const rulesBtn = document.getElementById('rulesOpen')
@@ -144,16 +147,13 @@ rules.addEventListener('click', () => {
     }
 })
 
-// // Just a little tester because today my brain isn't braining right
-// function testRand() {
-//   if ((rand() == 3)) {
-//     alert("versenkt!");
-//     console.log(rand())
-//   }  
-// }
-// testRand()
+// reset the score
+currentScore.addEventListener('click', () =>{
+    playerCount = 0
+    currentScore.textContent = 0
+    localStorage.removeItem('playerScore')
+})
 
-//tester that fires the function when the site registered a click
-// document.addEventListener('click', () =>{
-//     checkWin(rand())
-// })
+window.addEventListener('load', () => {
+    beforeWrapper.style.opacity = 1
+})
