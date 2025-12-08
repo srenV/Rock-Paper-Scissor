@@ -43,6 +43,7 @@
       </div>
     </header>
     <main>
+      
       <div id="beforeWrapper">
         <div class="button blue">
           <button class="innerButton paper" value="0"></button>
@@ -66,18 +67,20 @@
             <div class="button resultButton" id="playerChoiceResult">
               <button class="innerButton rBtn" id="playerChoiceButton"></button>
             </div>
-            <span>You Picked</span>
+            <span class="pickSpan">You Picked</span>
           </div>
 
-          
           <div id="computerResult" class="result">
             <div class="button resultButton" id="computerChoiceResult">
               <button class="innerButton rBtn" id="computerChoiceButton"></button>
             </div>
-            <span>The House Picked</span>
+            <span class="pickSpan">The House Picked</span>
           </div>
         </div>
-        <button onclick="playAgain()" id="playAgainBtn">Play again</button>
+        <div id="afterWrapperLower">
+          <span id="resultSpan"></span>
+          <button onclick="playAgain()" id="playAgainBtn">Play again</button>
+        </div>
       </div>
 
       <div id="rulesOpen"></div>
@@ -92,7 +95,7 @@
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
-        >. Coded by <a href="https://github.com/srenV">Soeren Timo Voigt</a>.
+        >. Proudly Coded by <a href="https://github.com/srenV">Soeren Timo Voigt</a>.
       </div>
     </footer>
   </body>

@@ -22,6 +22,7 @@ const playerChoiceButton = document.getElementById('playerChoiceButton')
 const computerChoiceResult = document.getElementById('computerChoiceResult')
 const computerChoiceButton = document.getElementById('computerChoiceButton')
 
+const resultSpan = document.getElementById('resultSpan')
 const fields = document.querySelectorAll('.innerButton')
 
 
@@ -65,36 +66,29 @@ function checkWin(playerInput){
     let playerChoice = parseInt(playerInput)
     let result = (playerChoice - computerChoice + 3) % 3
 
-    //console logging for the moment
-    console.log('------------------------------------')
-    console.log('Computers Choice: ', computerChoice)
-    console.log('Players Choice: ', playerChoice)
-
     //removing existing classes from the buttons
     playerChoiceResult.classList.remove('blue', 'yellow', 'red');
     playerChoiceButton.classList.remove('paper', 'scissor', 'rock');
     computerChoiceResult.classList.remove('blue', 'yellow', 'red');
     computerChoiceButton.classList.remove('paper', 'scissor', 'rock');
 
-
+    //main switch
     switch (result) {
         case 0:
-            // draw()
-            console.log('draw')
+            resultSpan.innerHTML = "Draw"
             break
         case 1:
-            // playerWin()
-            console.log('playerWin')
+            resultSpan.innerHTML = "You Win"
             playerCount++
             currentScore.textContent = playerCount;
             localStorage.setItem('playerScore', playerCount)
             break
         case 2:
-            // computerWin()
             console.log('computerWin')
+            resultSpan.innerHTML = "You Loose"
             break
     }
-    //changes the button collors and inner images for the result pages
+    //changes the button collors and inner images for the result page
     switch(computerChoice){
         case 0:
             computerChoiceResult.classList.add('blue')
@@ -128,7 +122,7 @@ function checkWin(playerInput){
     beforeWrapper.style.display = 'none'
 }
 
-//simple play Again Function
+//simple play Again Function (called by a onclick function)
 function playAgain(){
     afterWrapper.style.display = 'none'
     beforeWrapper.style.display = 'grid'
@@ -137,6 +131,7 @@ function playAgain(){
 //toggles the rules menu
 rules.addEventListener('click', () => {
     beforeWrapper.style.display = 'none'
+    afterWrapper.style.display = 'none'
     const rulesBtn = document.getElementById('rulesOpen')
 
     if(rulesBtn.classList.contains('active')){
@@ -154,6 +149,7 @@ currentScore.addEventListener('click', () =>{
     localStorage.removeItem('playerScore')
 })
 
+//page load fade in
 window.addEventListener('load', () => {
     beforeWrapper.style.opacity = 1
 })
