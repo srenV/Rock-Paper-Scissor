@@ -61,7 +61,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   padding: 0.8rem;
   position: absolute;
   top: 1rem;
@@ -93,17 +93,35 @@ header {
   color: var(--red-600);
 }
 
+#leftScoreDiv span:nth-child(4) {
+  color: var(--purple-600);
+}
+
+#leftScoreDiv span:nth-child(5) {
+  color: var(--light-blue-400);
+}
+
+/* Toggle styling for the Lizard and Spock Span */
+.lsSpan{
+  display: none;
+}
+
+.lsSpan.active{
+  display: flex;
+}
+
 #rightScoreDiv {
-  justify-content: space-around;
+  justify-content: space-evenly;
   text-align: center;
   display: flex;
+  min-height: initial;
   flex-direction: column;
-  width: 5.5rem;
   background: white;
   color: var(--navy-900);
   border-radius: 0.3rem;
   padding: 0.5em;
   line-height: 1;
+  height: auto;
 }
 
 #rightScoreDiv p {
@@ -133,6 +151,25 @@ header {
   opacity: 0;
 }
 
+#bonusBeforeWrapper {
+  display: none;
+  grid-template-areas:
+    "yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn"
+    "cyanBtn cyanBtn cyanBtn cyanBtn shadow shadow blueBtn blueBtn blueBtn blueBtn"
+    "purpleBtn purpleBtn purpleBtn purpleBtn purpleBtn redBtn redBtn redBtn redBtn redBtn";
+  grid-template-rows: 12vh 18vh 15vh;
+  grid-template-columns: 1rem 1rem 1rem 1rem 5rem 5rem 1rem 1rem 1rem 1rem;
+  align-content: center;
+  justify-items: center;
+  background-image: url(./images/bg-pentagon.svg);
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 70%;
+  background-size: 100%;
+  transition: all 1s ease;
+  opacity: 0;
+}
+
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 /*                                     Buttons                                        */
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
@@ -148,6 +185,17 @@ header {
   margin-bottom: 1rem;
 }
 
+.shadow{
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  border-radius: 50%;
+  margin-inline: 1rem;
+  margin-bottom: 1rem;
+  grid-area: shadow;
+}
+
 .innerButton {
   height: 6rem;
   width: 6rem;
@@ -158,6 +206,20 @@ header {
 }
 
 .innerButton:active {
+  border-top: 0.4rem solid rgb(201, 201, 201);
+  border-bottom: none;
+}
+
+.innerButtonBonus {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  border-bottom: 0.4rem solid rgb(201, 201, 201);
+  cursor: pointer;
+}
+
+.innerButtonBonus:active {
   border-top: 0.4rem solid rgb(201, 201, 201);
   border-bottom: none;
 }
@@ -180,6 +242,18 @@ header {
   border-bottom: 0.4rem solid var(--red-800);
 }
 
+.purple {
+  grid-area: purpleBtn;
+  background-color: var(--purple-600);
+  border-bottom: 0.4rem solid var(--purple-700);
+}
+
+.cyan {
+  grid-area: cyanBtn;
+  background-color: var(--light-blue-400);
+  border-bottom: 0.4rem solid var(--light-blue-500);
+}
+
 .paper {
   background-image: url(./images/icon-paper.svg);
   background-size: contain;
@@ -198,6 +272,22 @@ header {
 
 .rock {
   background-image: url(./images/icon-rock.svg);
+  background-size: contain;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lizard {
+  background-image: url(./images/icon-lizard.svg);
+  background-size: contain;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.spock {
+  background-image: url(./images/icon-spock.svg);
   background-size: contain;
   background-size: 50%;
   background-position: center;
@@ -360,8 +450,27 @@ footer {
     top: 60%;
     transform: translate(-50%, -50%);
     position: absolute;
-    display: none;
+    display: grid;
   }
+
+  #bonusBeforeWrapper {
+  display: none;
+  grid-template-areas:
+    "yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn"
+    "cyanBtn cyanBtn cyanBtn cyanBtn shadow shadow blueBtn blueBtn blueBtn blueBtn"
+    "purpleBtn purpleBtn purpleBtn purpleBtn purpleBtn redBtn redBtn redBtn redBtn redBtn";
+  grid-template-rows: 10rem 15rem 15rem;
+  grid-template-columns: 1rem 1rem 1rem 1rem 10rem 10rem 1rem 1rem 1rem 1rem;
+  align-content: center;
+  justify-items: center;
+  background-image: url(./images/bg-pentagon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  transition: all 1s ease;
+  opacity: 0;
+  transform: scale(0.8);
+}
 
   .button {
     display: flex;
@@ -375,6 +484,11 @@ footer {
   }
 
   .innerButton {
+    height: 9rem;
+    width: 9rem;
+  }
+
+  .innerButtonBonus {
     height: 9rem;
     width: 9rem;
   }
