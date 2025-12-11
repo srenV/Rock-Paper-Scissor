@@ -212,7 +212,6 @@ currentScore.addEventListener("click", () => {
 
 //page load fade in
 window.addEventListener("load", () => {
-  beforeWrapper.style.opacity = 1;
   tipsToggle(true)
   setTimeout(() => {
     tipsToggle(false)

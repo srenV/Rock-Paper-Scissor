@@ -150,7 +150,7 @@ header {
   background-position: center;
   background-size: 65%;
   transition: all 1s ease;
-  opacity: 0;
+  opacity: 1;
 }
 
 #bonusBeforeWrapper {
