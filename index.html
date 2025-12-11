@@ -16,20 +16,20 @@
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
   </head>
   <body>
-    <header class="scoreContainer" id="scoreContainer">
-      <div id="leftScoreDiv">
-        <span>Rock</span>
+    <header class="scoreContainer" id="scoreContainer" role="banner">
+      <div id="leftScoreDiv" aria-label="Game mode selector">
+        <span aria-label="Rock Paper Scissors">Rock</span>
         <span>Paper</span>
         <span>Scissors</span>
-        <span class="lsSpan">Lizard</span>
-        <span class="lsSpan">Spock</span>
-        <span class="tips"  id="modeTip">▲ <br> Click to change the mode</span>
+        <span class="lsSpan" aria-label="Lizard">Lizard</span>
+        <span class="lsSpan" aria-label="Spock">Spock</span>
+        <span class="tips" id="modeTip" aria-label="Click to change the game mode">▲ <br> Click to change the mode</span>
       </div>
 
-      <div id="rightScoreDiv">
+      <div id="rightScoreDiv" aria-label="Player score">
         <p>Score</p>
-        <span id="currentScore">0</span>
-        <span class="tips" id="scoreTip">▲ <br>Click to reset the Score</span>
+        <span id="currentScore" aria-label="Current score">0</span>
+        <span class="tips" id="scoreTip" aria-label="Click to reset the score">▲ <br>Click to reset the Score</span>
       </div>
       
     </header>
@@ -37,87 +37,89 @@
       
       
 
-      <div id="beforeWrapper">
+      <div id="beforeWrapper" role="region" aria-label="Rock Paper Scissors game options">
         <div class="button blue">
-          <button class="innerButton paper" value="0"></button>
+          <button class="innerButton paper" value="0" aria-label="Choose Paper"></button>
         </div>
 
         <div class="button yellow">
-          <button class="innerButton scissor" value="1"></button>
+          <button class="innerButton scissor" value="1" aria-label="Choose Scissors"></button>
         </div>
 
         <div class="button red">
-          <button class="innerButton rock" value="2"></button>
+          <button class="innerButton rock" value="2" aria-label="Choose Rock"></button>
         </div>
 
       </div>
 
       <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 
-      <div id="bonusBeforeWrapper">
+      <div id="bonusBeforeWrapper" role="region" aria-label="Rock Paper Scissors Lizard Spock game options">
         <div class="button bonusButton blue">
-          <button class="innerButtonBonus paper" value="1"></button>
+          <button class="innerButtonBonus paper" value="1" aria-label="Choose Paper"></button>
         </div>
 
         <div class="button bonusButton yellow">
-          <button class="innerButtonBonus scissor" value="2"></button>
+          <button class="innerButtonBonus scissor" value="2" aria-label="Choose Scissors"></button>
         </div>
 
         <div class="button bonusButton red">
-          <button class="innerButtonBonus rock" value="0"></button>
+          <button class="innerButtonBonus rock" value="0" aria-label="Choose Rock"></button>
         </div>
 
         <div class="shadow">
-          <button class="shadow"></button>
+          <button class="shadow" aria-hidden="true"></button>
         </div>
 
         <div class="button bonusButton purple">
-          <button class="innerButtonBonus lizard" value="3"></button>
+          <button class="innerButtonBonus lizard" value="3" aria-label="Choose Lizard"></button>
         </div>
 
         <div class="button bonusButton cyan">
-          <button class="innerButtonBonus spock" value="4"></button>
+          <button class="innerButtonBonus spock" value="4" aria-label="Choose Spock"></button>
         </div>
 
       </div>
 
       <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 
-      <div class="afterWrapper" id="afterWrapper">
+      <div class="afterWrapper" id="afterWrapper" role="region" aria-label="Game results">
         <div class="afterBtnWrapper">
-          <div id="playerResult" class="result">
+          <div id="playerResult" class="result" aria-label="Your choice">
             <div class="button resultButton" id="playerChoiceResult">
-              <button class="innerButton rBtn" id="playerChoiceButton"></button>
+              <button class="innerButton rBtn" id="playerChoiceButton" aria-hidden="true"></button>
             </div>
             <span class="pickSpan">You Picked</span>
           </div>
 
-          <div id="computerResult" class="result">
+          <div id="computerResult" class="result" aria-label="Computer choice">
             <div class="button resultButton" id="computerChoiceResult">
-              <button class="innerButton rBtn" id="computerChoiceButton"></button>
+              <button class="innerButton rBtn" id="computerChoiceButton" aria-hidden="true"></button>
             </div>
             <span class="pickSpan">The House Picked</span>
           </div>
         </div>
         <div id="afterWrapperLower">
-          <span id="resultSpan"></span>
-          <button onclick="playAgain()" id="playAgainBtn">Play again</button>
+          <span id="resultSpan" role="alert" aria-live="polite" aria-label="Game result"></span>
+          <button onclick="playAgain()" id="playAgainBtn" aria-label="Play again">Play again</button>
         </div>
       </div>
 
       <div id="rulesOpen"></div>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
       <div id="rules">
-        <span>Rules</span>
+        <button aria-label="Open game rules" aria-expanded="false" aria-controls="rulesOpen">
+          <span>Rules</span>
+        </button>
       </div>
       
       <div class="attribution">
         Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer"
           >Frontend Mentor</a
-        >. Proudly Coded by <a href="https://github.com/srenV">Soeren Timo Voigt</a>.
+        >. Proudly Coded by <a href="https://github.com/srenV" target="_blank" rel="noopener noreferrer">Soeren Timo Voigt</a>.
       </div>
     </footer>
   </body>

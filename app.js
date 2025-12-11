@@ -179,20 +179,24 @@ rules.addEventListener("click", () => {
   bonusBeforeWrapper.style.display = "none";
   afterWrapper.style.display = "none";
   const rulesBtn = document.getElementById("rulesOpen");
+  const rulesButton = document.querySelector("#rules button");
   tipsToggle(true)
 
   if (rulesBtn.classList.contains("active") && modeSwitch) {
     rulesBtn.classList.remove("active");
     beforeWrapper.style.display = "grid";
     scoreContainer.style.pointerEvents = 'auto'
+    rulesButton.setAttribute("aria-expanded", "false");
     tipsToggle(false)
   }else if(rulesBtn.classList.contains("active") && !modeSwitch){
     rulesBtn.classList.remove("active");
     bonusBeforeWrapper.style.display = "grid";
     scoreContainer.style.pointerEvents = 'auto'
+    rulesButton.setAttribute("aria-expanded", "false");
     tipsToggle(false)
   } else {
     rulesBtn.classList.add("active");
+    rulesButton.setAttribute("aria-expanded", "true");
     scoreContainer.style.pointerEvents = 'none'
     tips.style.opacity = 1
     tipsToggle(true)
