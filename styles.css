@@ -404,32 +404,37 @@ header {
 /*                                        Tips                                        */
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
-#scoreTip {
+.tips#scoreTip {
   display: flex;
   text-align: center;
   width: 6rem;
   height: auto;
   position: absolute;
-  right: 1.3rem;
-  top: 8rem;
+  right: 0rem;
+  bottom: -3rem;
+   font-size: 1rem;
 }
 
-#modeTip {
+.tips#modeTip {
   display: flex;
   text-align: center;
   width: 6rem;
   height: auto;
   position: absolute;
-  left: 3.5rem;
-  top: 8rem;
+  left: 0rem;
+  bottom: -2.5rem;
+   font-size: 1rem;
 }
 
-#tips{
+.tips{
   opacity: 0;
   transition: all 1s ease;
+  position: absolute;
+  font-size: 1rem;
+  color: white;
 }
 
-#tips.active{
+.tips.active{
   opacity: 1;
 }
 
@@ -582,7 +587,30 @@ footer {
   }
 
   /* Tips */
-  #tips{
-    display: none;
+
+  .tips{
+    font-size: 1rem;
   }
+
+  .tips#scoreTip {
+  display: flex;
+  text-align: center;
+  font-size: 1rem;
+  width: 6rem;
+  height: auto;
+  position: absolute;
+  color: white;
+  right: 2rem;
+  top: 7rem;
+}
+
+.tips#modeTip {
+  display: flex;
+  text-align: center;
+  width: 6rem;
+  height: auto;
+  position: absolute;
+  left: 2rem;
+  top: 7rem;
+}
 }

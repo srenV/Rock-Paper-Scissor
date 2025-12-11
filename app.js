@@ -48,7 +48,7 @@ const rules = document.getElementById("rules");
 const rulesOpen = document.getElementById('rulesOpen')
 
 //Tips
-const tips = document.getElementById('tips')
+const tips = document.querySelectorAll('.tips')
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // The Main-Logic for the Oponent
 // Each possible output stands for one move (0 = Paper | 1 = Scissor | 2 = Rock)
@@ -159,27 +159,43 @@ function playAgain() {
     leftScoreDiv.style.fontSize = "1.5rem";
   }
 }
+//tips
+function tipsToggle(bool){
+  if(!bool){
+    tips.forEach((tip) =>{
+    tip.style.opacity = 0
+  })
+  }else{
+    tips.forEach((tip) =>{
+    tip.style.opacity = 1
+  })
+}
+}
+
 
 //toggles the rules menu
 rules.addEventListener("click", () => {
   beforeWrapper.style.display = "none";
   bonusBeforeWrapper.style.display = "none";
   afterWrapper.style.display = "none";
-  tips.style.opacity = 0
   const rulesBtn = document.getElementById("rulesOpen");
+  tipsToggle(true)
 
   if (rulesBtn.classList.contains("active") && modeSwitch) {
     rulesBtn.classList.remove("active");
     beforeWrapper.style.display = "grid";
     scoreContainer.style.pointerEvents = 'auto'
+    tipsToggle(false)
   }else if(rulesBtn.classList.contains("active") && !modeSwitch){
     rulesBtn.classList.remove("active");
     bonusBeforeWrapper.style.display = "grid";
     scoreContainer.style.pointerEvents = 'auto'
+    tipsToggle(false)
   } else {
     rulesBtn.classList.add("active");
     scoreContainer.style.pointerEvents = 'none'
     tips.style.opacity = 1
+    tipsToggle(true)
   }
 });
 
@@ -193,11 +209,13 @@ currentScore.addEventListener("click", () => {
 //page load fade in
 window.addEventListener("load", () => {
   beforeWrapper.style.opacity = 1;
-  tips.style.opacity = 1
+  tipsToggle(true)
   setTimeout(() => {
-    tips.style.opacity = 0
+    tipsToggle(false)
   }, 2000);
-});
+})
+  
+
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||||||||||||||||Rock Paper Scissors Lizard Spok|||||||||||||||||||
@@ -269,15 +287,15 @@ function checkWinRPSLS(playerInput) {
 
     //changes the button colors and inner images for the result page
     switch (computerChoice) {
-      case 0:
+      case 1:
         computerChoiceResult.classList.add("blue");
         computerChoiceButton.classList.add("paper");
         break;
-      case 1:
+      case 2:
         computerChoiceResult.classList.add("yellow");
         computerChoiceButton.classList.add("scissor");
         break;
-      case 2:
+      case 0:
         computerChoiceResult.classList.add("red");
         computerChoiceButton.classList.add("rock");
         break;
@@ -292,15 +310,15 @@ function checkWinRPSLS(playerInput) {
     }
 
     switch (playerChoice) {
-      case 0:
+      case 1:
         playerChoiceResult.classList.add("blue");
         playerChoiceButton.classList.add("paper");
         break;
-      case 1:
+      case 2:
         playerChoiceResult.classList.add("yellow");
         playerChoiceButton.classList.add("scissor");
         break;
-      case 2:
+      case 0:
         playerChoiceResult.classList.add("red");
         playerChoiceButton.classList.add("rock");
         break;
