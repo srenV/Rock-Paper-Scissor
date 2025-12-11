@@ -102,11 +102,11 @@ header {
 }
 
 /* Toggle styling for the Lizard and Spock Span */
-.lsSpan{
+.lsSpan {
   display: none;
 }
 
-.lsSpan.active{
+.lsSpan.active {
   display: flex;
 }
 
@@ -185,7 +185,7 @@ header {
   margin-bottom: 1rem;
 }
 
-.shadow{
+.shadow {
   visibility: hidden;
   justify-content: center;
   align-items: center;
@@ -401,6 +401,39 @@ header {
 }
 
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+/*                                        Tips                                        */
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+#scoreTip {
+  display: flex;
+  text-align: center;
+  width: 6rem;
+  height: auto;
+  position: absolute;
+  right: 1.3rem;
+  top: 8rem;
+}
+
+#modeTip {
+  display: flex;
+  text-align: center;
+  width: 6rem;
+  height: auto;
+  position: absolute;
+  left: 3.5rem;
+  top: 8rem;
+}
+
+#tips{
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+#tips.active{
+  opacity: 1;
+}
+
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 /*                                      Footer                                        */
 /* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
 
@@ -454,23 +487,23 @@ footer {
   }
 
   #bonusBeforeWrapper {
-  display: none;
-  grid-template-areas:
-    "yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn"
-    "cyanBtn cyanBtn cyanBtn cyanBtn shadow shadow blueBtn blueBtn blueBtn blueBtn"
-    "purpleBtn purpleBtn purpleBtn purpleBtn purpleBtn redBtn redBtn redBtn redBtn redBtn";
-  grid-template-rows: 10rem 15rem 15rem;
-  grid-template-columns: 1rem 1rem 1rem 1rem 10rem 10rem 1rem 1rem 1rem 1rem;
-  align-content: center;
-  justify-items: center;
-  background-image: url(./images/bg-pentagon.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
-  transition: all 1s ease;
-  opacity: 0;
-  transform: scale(0.8);
-}
+    display: none;
+    grid-template-areas:
+      "yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn yellowBtn"
+      "cyanBtn cyanBtn cyanBtn cyanBtn shadow shadow blueBtn blueBtn blueBtn blueBtn"
+      "purpleBtn purpleBtn purpleBtn purpleBtn purpleBtn redBtn redBtn redBtn redBtn redBtn";
+    grid-template-rows: 10rem 15rem 15rem;
+    grid-template-columns: 1rem 1rem 1rem 1rem 10rem 10rem 1rem 1rem 1rem 1rem;
+    align-content: center;
+    justify-items: center;
+    background-image: url(./images/bg-pentagon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    transition: all 1s ease;
+    opacity: 0;
+    transform: scale(0.8);
+  }
 
   .button {
     display: flex;
@@ -542,10 +575,14 @@ footer {
     bottom: 5vh;
   }
 
-  #rulesOpen{
+  #rulesOpen {
     height: 60vh;
     width: 60vh;
     top: 60%;
   }
 
+  /* Tips */
+  #tips{
+    display: none;
+  }
 }

@@ -14,23 +14,9 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="./app.js" defer></script>
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
-
-    <!-- 
-  Score
-  Rules
-
-  You Picked
-  The House Picked
-
-  You Win
-  You Lose
-
-  Play Again -->
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   </head>
   <body>
-    <header class="scoreContainer">
+    <header class="scoreContainer" id="scoreContainer">
       <div id="leftScoreDiv">
         <span>Rock</span>
         <span>Paper</span>
@@ -43,9 +29,16 @@
         <p>Score</p>
         <span id="currentScore">0</span>
       </div>
+
+      
     </header>
     <main>
       
+      <div id="tips">
+      <span  id="modeTip">▲ <br> Click to change the mode</span>
+      <span  id="scoreTip">▲ <br>Click to reset the Score</span>
+    </div>
+
       <div id="beforeWrapper">
         <div class="button blue">
           <button class="innerButton paper" value="0"></button>
@@ -65,15 +58,15 @@
 
       <div id="bonusBeforeWrapper">
         <div class="button bonusButton blue">
-          <button class="innerButtonBonus paper" value="0"></button>
+          <button class="innerButtonBonus paper" value="1"></button>
         </div>
 
         <div class="button bonusButton yellow">
-          <button class="innerButtonBonus scissor" value="1"></button>
+          <button class="innerButtonBonus scissor" value="2"></button>
         </div>
 
         <div class="button bonusButton red">
-          <button class="innerButtonBonus rock" value="2"></button>
+          <button class="innerButtonBonus rock" value="0"></button>
         </div>
 
         <div class="shadow">

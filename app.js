@@ -8,6 +8,7 @@ const paper = document.querySelector(".paper");
 const scissor = document.querySelector(".scissor");
 const lizard = document.querySelector(".lizard");
 const spock = document.querySelector(".spock");
+const scoreContainer = document.getElementById('scoreContainer')
 
 //Sections
 const beforeWrapper = document.getElementById("beforeWrapper");
@@ -44,6 +45,10 @@ currentScore.textContent = playerCount;
 
 //Rules
 const rules = document.getElementById("rules");
+const rulesOpen = document.getElementById('rulesOpen')
+
+//Tips
+const tips = document.getElementById('tips')
 //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // The Main-Logic for the Oponent
 // Each possible output stands for one move (0 = Paper | 1 = Scissor | 2 = Rock)
@@ -98,10 +103,10 @@ function checkWin(playerInput) {
         break;
       case 2:
         console.log("computerWin");
-        resultSpan.innerHTML = "You Loose";
+        resultSpan.innerHTML = "You Lose";
         break;
     }
-    //changes the button collors and inner images for the result page
+    //changes the button colors and inner images for the result page
     switch (computerChoice) {
       case 0:
         computerChoiceResult.classList.add("blue");
@@ -160,13 +165,21 @@ rules.addEventListener("click", () => {
   beforeWrapper.style.display = "none";
   bonusBeforeWrapper.style.display = "none";
   afterWrapper.style.display = "none";
+  tips.style.opacity = 0
   const rulesBtn = document.getElementById("rulesOpen");
 
-  if (rulesBtn.classList.contains("active")) {
+  if (rulesBtn.classList.contains("active") && modeSwitch) {
     rulesBtn.classList.remove("active");
     beforeWrapper.style.display = "grid";
+    scoreContainer.style.pointerEvents = 'auto'
+  }else if(rulesBtn.classList.contains("active") && !modeSwitch){
+    rulesBtn.classList.remove("active");
+    bonusBeforeWrapper.style.display = "grid";
+    scoreContainer.style.pointerEvents = 'auto'
   } else {
     rulesBtn.classList.add("active");
+    scoreContainer.style.pointerEvents = 'none'
+    tips.style.opacity = 1
   }
 });
 
@@ -180,10 +193,14 @@ currentScore.addEventListener("click", () => {
 //page load fade in
 window.addEventListener("load", () => {
   beforeWrapper.style.opacity = 1;
+  tips.style.opacity = 1
+  setTimeout(() => {
+    tips.style.opacity = 0
+  }, 2000);
 });
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-//|||||||||||||||||Rock Paper Scissors Reptile Spok|||||||||||||||||||
+//|||||||||||||||||Rock Paper Scissors Lizard Spok|||||||||||||||||||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 bonusFields.forEach((bonusField) => {
@@ -199,23 +216,27 @@ function checkWinRPSLS(playerInput) {
   if (!modeSwitch) {
     let computerChoice = rand(5);
     let playerChoice = parseInt(playerInput);
-    let result;
+    let result = (playerChoice - computerChoice + 5) % 5;
 
-    // 0=Paper, 1=Scissors, 2=Rock, 3=Lizard, 4=Spock
-    if (playerChoice === computerChoice) {
-      result = 0; // Draw
-    } else if (
-      (playerChoice === 0 && (computerChoice === 2 || computerChoice === 4)) || // Paper beats Rock and Spock
-      (playerChoice === 1 && (computerChoice === 0 || computerChoice === 3)) || // Scissors beats Paper and Lizard
-      (playerChoice === 2 && (computerChoice === 1 || computerChoice === 3)) || // Rock beats Scissors and Lizard
-      (playerChoice === 3 && (computerChoice === 4 || computerChoice === 0)) || // Lizard beats Spock and Paper
-      (playerChoice === 4 && (computerChoice === 1 || computerChoice === 2))    // Spock beats Scissors and Rock
-    ) {
-      result = 1; // Player wins
-    } else {
-      result = 2; // Computer wins
+    //main switch
+    switch (result) {
+      case 0:
+        resultSpan.innerHTML = "Draw";
+        break;
+      case 1:
+      case 3:
+        resultSpan.innerHTML = "You Win";
+        playerCount++;
+        currentScore.textContent = playerCount;
+        localStorage.setItem("playerScore", playerCount);
+        break;
+      case 2:
+      case 4:
+        resultSpan.innerHTML = "You Lose";
+        break;
     }
-
+  
+    
     //removing existing classes from the buttons
     playerChoiceResult.classList.remove(
       "blue",
@@ -246,23 +267,7 @@ function checkWinRPSLS(playerInput) {
       "spock"
     );
 
-    //main switch
-    switch (result) {
-      case 0:
-        resultSpan.innerHTML = "Draw";
-        break;
-      case 1:
-        resultSpan.innerHTML = "You Win";
-        playerCount++;
-        currentScore.textContent = playerCount;
-        localStorage.setItem("playerScore", playerCount);
-        break;
-      case 2:
-        console.log("computerWin");
-        resultSpan.innerHTML = "You Loose";
-        break;
-    }
-    //changes the button collors and inner images for the result page
+    //changes the button colors and inner images for the result page
     switch (computerChoice) {
       case 0:
         computerChoiceResult.classList.add("blue");
@@ -313,6 +318,7 @@ function checkWinRPSLS(playerInput) {
   }
 }
 
+
 //Mode Switch
 // true => RPS | false => RPSLS
 leftScoreDiv.addEventListener("click", () => {
@@ -335,11 +341,13 @@ function currentMode() {
     bonusBeforeWrapper.style.display = "none";
     afterWrapper.style.display = "none";
     leftScoreDiv.style.fontSize = "2rem";
+    rulesOpen.style.backgroundImage = "url(./images/image-rules.svg)"
   } else {
     beforeWrapper.style.display = "none";
     bonusBeforeWrapper.style.display = "grid";
     bonusBeforeWrapper.style.opacity = "1";
     afterWrapper.style.display = "none";
     leftScoreDiv.style.fontSize = "1.5rem";
+    rulesOpen.style.backgroundImage = "url(./images/image-rules-bonus.svg)"
   }
 }
