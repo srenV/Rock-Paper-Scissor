@@ -18,8 +18,10 @@ const bonusBeforeWrapper = document.getElementById("bonusBeforeWrapper");
 const leftScoreDiv = document.getElementById("leftScoreDiv");
 const lizardSpockSpan = document.querySelectorAll(".lsSpan");
 
+//Result Screen
 const afterWrapper = document.getElementById("afterWrapper");
 const resultField = document.querySelector("#resultContainer");
+const resultSpan = document.getElementById("resultSpan");
 
 //player result field
 const playerChoiceResult = document.getElementById("playerChoiceResult");
@@ -29,16 +31,14 @@ const playerChoiceButton = document.getElementById("playerChoiceButton");
 const computerChoiceResult = document.getElementById("computerChoiceResult");
 const computerChoiceButton = document.getElementById("computerChoiceButton");
 
-const resultSpan = document.getElementById("resultSpan");
+//Buttons for the RPS and RPSLS
 const fields = document.querySelectorAll(".innerButton");
-
 const bonusFields = document.querySelectorAll(".innerButtonBonus");
 
 //Modes
 let modeSwitch = true;
-afterWrapper.style.display = "none";
 
-//Button
+//Play again button
 const playAgainBtn = document.getElementById('playAgainBtn')
 
 // Scoring
@@ -152,84 +152,6 @@ function checkWin(playerInput) {
     return;
   }
 }
-
-//simple play Again Function (called by a onclick function)
-function playAgain() {
-  if (modeSwitch) {
-    beforeWrapper.style.display = "grid";
-    beforeWrapper.style.opacity = "1";
-    bonusBeforeWrapper.style.display = "none";
-    afterWrapper.style.display = "none";
-    leftScoreDiv.style.fontSize = "2.5rem";
-  } else {
-    beforeWrapper.style.display = "none";
-    bonusBeforeWrapper.style.display = "grid";
-    bonusBeforeWrapper.style.opacity = "1";
-    afterWrapper.style.display = "none";
-    leftScoreDiv.style.fontSize = "1.5rem";
-  }
-  rules.style.display = 'flex'
-}
-//tips
-function tipsToggle(bool){
-  if(!bool){
-    tips.forEach((tip) =>{
-    tip.style.opacity = 0
-  })
-  }else{
-    tips.forEach((tip) =>{
-    tip.style.opacity = 1
-  })
-}
-}
-
-
-//toggles the rules menu
-rules.addEventListener("click", () => {
-  beforeWrapper.style.display = "none";
-  bonusBeforeWrapper.style.display = "none";
-  afterWrapper.style.display = "none";
-  const rulesBtn = document.getElementById("rulesOpen");
-  const rulesButton = document.querySelector("#rules button");
-  tipsToggle(true)
-
-  if (rulesBtn.classList.contains("active") && modeSwitch) {
-    rulesBtn.classList.remove("active");
-    beforeWrapper.style.display = "grid";
-    scoreContainer.style.pointerEvents = 'auto'
-    rulesButton.setAttribute("aria-expanded", "false");
-    tipsToggle(false)
-  }else if(rulesBtn.classList.contains("active") && !modeSwitch){
-    rulesBtn.classList.remove("active");
-    bonusBeforeWrapper.style.display = "grid";
-    scoreContainer.style.pointerEvents = 'auto'
-    rulesButton.setAttribute("aria-expanded", "false");
-    tipsToggle(false)
-  } else {
-    rulesBtn.classList.add("active");
-    rulesButton.setAttribute("aria-expanded", "true");
-    scoreContainer.style.pointerEvents = 'none'
-    tips.style.opacity = 1
-    tipsToggle(true)
-  }
-});
-
-// reset the score
-currentScore.addEventListener("click", () => {
-  playerCount = 0;
-  currentScore.textContent = 0;
-  localStorage.removeItem("playerScore");
-});
-
-//page load fade in
-window.addEventListener("load", () => {
-  tipsToggle(true)
-  setTimeout(() => {
-    tipsToggle(false)
-  }, 2000);
-})
-  
-
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||||||||||||||||Rock Paper Scissors Lizard Spok|||||||||||||||||||
@@ -356,8 +278,102 @@ function checkWinRPSLS(playerInput) {
   }
 }
 
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||Play again||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+// called by a onclick function
+function playAgain() {
+  if (modeSwitch) {
+    beforeWrapper.style.display = "grid";
+    beforeWrapper.style.opacity = "1";
+    bonusBeforeWrapper.style.display = "none";
+    afterWrapper.style.display = "none";
+    leftScoreDiv.style.fontSize = "2.5rem";
+  } else {
+    beforeWrapper.style.display = "none";
+    bonusBeforeWrapper.style.display = "grid";
+    bonusBeforeWrapper.style.opacity = "1";
+    afterWrapper.style.display = "none";
+    leftScoreDiv.style.fontSize = "1.5rem";
+  }
+  rules.style.display = 'flex'
+}
 
-//Mode Switch
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||||||Tips|||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+function tipsToggle(bool){
+  if(!bool){
+    tips.forEach((tip) =>{
+    tip.style.opacity = 0
+  })
+  }else{
+    tips.forEach((tip) =>{
+    tip.style.opacity = 1
+  })
+}
+}
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||Rule toggle|||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+rules.addEventListener("click", () => {
+  beforeWrapper.style.display = "none";
+  bonusBeforeWrapper.style.display = "none";
+  afterWrapper.style.display = "none";
+  const rulesBtn = document.getElementById("rulesOpen");
+  const rulesButton = document.querySelector("#rules button");
+  tipsToggle(true)
+
+  if (rulesBtn.classList.contains("active") && modeSwitch) {
+    rulesBtn.classList.remove("active");
+    beforeWrapper.style.display = "grid";
+    scoreContainer.style.pointerEvents = 'auto'
+    rulesButton.setAttribute("aria-expanded", "false");
+    tipsToggle(false)
+  }else if(rulesBtn.classList.contains("active") && !modeSwitch){
+    rulesBtn.classList.remove("active");
+    bonusBeforeWrapper.style.display = "grid";
+    scoreContainer.style.pointerEvents = 'auto'
+    rulesButton.setAttribute("aria-expanded", "false");
+    tipsToggle(false)
+  } else {
+    rulesBtn.classList.add("active");
+    rulesButton.setAttribute("aria-expanded", "true");
+    scoreContainer.style.pointerEvents = 'none'
+    tips.style.opacity = 1
+    tipsToggle(true)
+  }
+});
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||Score reset|||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+currentScore.addEventListener("click", () => {
+  playerCount = 0;
+  currentScore.textContent = 0;
+  localStorage.removeItem("playerScore");
+});
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||Page load animations|||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+window.addEventListener("load", () => {
+  tipsToggle(true)
+  afterWrapper.style.display = "none";
+  setTimeout(() => {
+    tipsToggle(false)
+  }, 2000);
+})
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+//|||||||||||||||||||||||||||Mode Switch||||||||||||||||||||||||||||||
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 // true => RPS | false => RPSLS
 leftScoreDiv.addEventListener("click", () => {
   modeSwitch = !modeSwitch;
@@ -373,7 +389,6 @@ leftScoreDiv.addEventListener("click", () => {
 });
 
 
-//Just a switch func to set some things
 function currentMode() {
   if (modeSwitch) {
     beforeWrapper.style.display = "grid";
