@@ -180,13 +180,13 @@ function checkWinRPSLS(playerInput) {
         resultSpan.innerHTML = "Draw";
         break;
       case 1:
-      case 3:
+      case 2:
         resultSpan.innerHTML = "You Win";
         playerCount++;
         currentScore.textContent = playerCount;
         localStorage.setItem("playerScore", playerCount);
         break;
-      case 2:
+      case 3:
       case 4:
         resultSpan.innerHTML = "You Lose";
         break;
@@ -228,11 +228,11 @@ function checkWinRPSLS(playerInput) {
 
     //changes the button colors and inner images for the result page
     switch (computerChoice) {
-      case 1:
+      case 2:
         computerChoiceResult.classList.add("blue");
         computerChoiceButton.classList.add("paper");
         break;
-      case 2:
+      case 4:
         computerChoiceResult.classList.add("yellow");
         computerChoiceButton.classList.add("scissor");
         break;
@@ -244,18 +244,18 @@ function checkWinRPSLS(playerInput) {
         computerChoiceResult.classList.add("purple");
         computerChoiceButton.classList.add("lizard");
         break;
-      case 4:
+      case 1:
         computerChoiceResult.classList.add("cyan");
         computerChoiceButton.classList.add("spock");
         break;
     }
 
     switch (playerChoice) {
-      case 1:
+      case 2:
         playerChoiceResult.classList.add("blue");
         playerChoiceButton.classList.add("paper");
         break;
-      case 2:
+      case 4:
         playerChoiceResult.classList.add("yellow");
         playerChoiceButton.classList.add("scissor");
         break;
@@ -267,7 +267,7 @@ function checkWinRPSLS(playerInput) {
         playerChoiceResult.classList.add("purple");
         playerChoiceButton.classList.add("lizard");
         break;
-      case 4:
+      case 1:
         playerChoiceResult.classList.add("cyan");
         playerChoiceButton.classList.add("spock");
         break;
