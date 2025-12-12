@@ -146,6 +146,7 @@ function checkWin(playerInput) {
         break;
     }
     afterWrapper.style.display = "flex";
+    rules.style.display = 'none'
     beforeWrapper.style.display = "none";
   } else {
     return;
@@ -167,6 +168,7 @@ function playAgain() {
     afterWrapper.style.display = "none";
     leftScoreDiv.style.fontSize = "1.5rem";
   }
+  rules.style.display = 'flex'
 }
 //tips
 function tipsToggle(bool){
@@ -349,6 +351,7 @@ function checkWinRPSLS(playerInput) {
         break;
     }
     afterWrapper.style.display = "flex";
+    rules.style.display = 'none'
     bonusBeforeWrapper.style.display = "none";
   }
 }
