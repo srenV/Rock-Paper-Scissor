@@ -349,6 +349,22 @@ header {
   border-bottom: none;
 }
 
+#computerChoiceButton{
+  animation: rpsInnerAnimation 1s;
+}
+
+#playerChoiceButton{
+   animation: rpsInnerAnimation 1s;
+}
+
+#computerChoiceResult{
+  animation: rpsOuterAnimation 1s;
+}
+
+#playerChoiceResult{
+  animation: rpsOuterAnimation 1s;
+}
+
 .result {
   display: flex;
   flex-direction: column;
@@ -623,4 +639,150 @@ footer {
   left: 2rem;
   top: 7rem;
 }
+}
+
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+/*                                      Keyframes                                     */
+/* ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| */
+
+@keyframes rpsInnerAnimation {
+  0%{
+    background-image: url(./images/icon-rock.svg);
+    background-size: 50%;
+  }
+  16%{
+    background-image: url(./images/icon-paper.svg);
+    background-size: 70%;
+  }
+  33%{
+    background-image: url(./images/icon-scissors.svg);
+    background-size: 50%;
+  }
+  50%{
+    background-image: url(./images/icon-rock.svg);
+    background-size: 70%;
+  }
+  66%{
+    background-image: url(./images/icon-paper.svg);
+    background-size: 50%;
+  }
+  83%{
+    background-image: url(./images/icon-scissors.svg);
+    background-size: 70%;
+  }
+}
+
+@keyframes rpsOuterAnimation {
+  0%{
+    background-color: var(--red-600);
+    border-bottom: 0.4rem solid var(--red-800)
+  }
+  16%{
+    background-color: var(--blue-500);
+    border-bottom: 0.4rem solid var(--blue-700)
+  }
+  33%{
+    background-color: var(--gold-500);
+    border-bottom: 0.4rem solid var(--gold-600)
+  }
+  50%{
+    background-color: var(--red-600);
+    border-bottom: 0.4rem solid var(--red-800)
+  }
+  66%{
+    background-color: var(--blue-500);
+    border-bottom: 0.4rem solid var(--blue-700)
+  }
+  83%{
+    background-color: var(--gold-500);
+    border-bottom: 0.4rem solid var(--gold-600)
+  }
+}
+
+
+
+@keyframes rpslsOuterAnimation {
+  0%{
+    background-color: var(--red-600);
+    border-bottom: 0.4rem solid var(--red-800)
+  }
+  10%{
+    background-color: var(--blue-500);
+    border-bottom: 0.4rem solid var(--blue-700)
+  }
+  20%{
+    background-color: var(--gold-500);
+    border-bottom: 0.4rem solid var(--gold-600)
+  }
+  30%{
+    background-color: var(--purple-600);
+    border-bottom: 0.4rem solid var(--purple-700)
+  }
+  40%{
+    background-color: var(--light-blue-400);
+    border-bottom: 0.4rem solid var(--light-blue-500)
+  }
+  50%{
+    background-color: var(--red-600);
+    border-bottom: 0.4rem solid var(--red-800)
+  }
+  60%{
+    background-color: var(--blue-500);
+    border-bottom: 0.4rem solid var(--blue-700)
+  }
+  70%{
+    background-color: var(--gold-500);
+    border-bottom: 0.4rem solid var(--gold-600)
+  }
+  80%{
+    background-color: var(--purple-600);
+    border-bottom: 0.4rem solid var(--purple-700)
+  }
+  90%{
+    background-color: var(--light-blue-400);
+    border-bottom: 0.4rem solid var(--light-blue-500)
+  }
+}
+
+@keyframes rpslsInnerAnimation {
+  0%{
+    background-image: url(./images/icon-rock.svg);
+    background-size: 50%;
+  }
+  10%{
+    background-image: url(./images/icon-paper.svg);
+    background-size: 70%;
+  }
+  20%{
+    background-image: url(./images/icon-scissors.svg);
+    background-size: 50%;
+  }
+  30%{
+    background-image: url(./images/icon-lizard.svg);
+    background-size: 70%;
+  }
+  40%{
+    background-image: url(./images/icon-spock.svg);
+    background-size: 50%;
+  }
+  50%{
+    background-image: url(./images/icon-rock.svg);
+    background-size: 70%;
+  }
+  60%{
+    background-image: url(./images/icon-paper.svg);
+    background-size: 50%;
+  }
+  70%{
+    background-image: url(./images/icon-scissors.svg);
+    background-size: 70%;
+  }
+  80%{
+    background-image: url(./images/icon-lizard.svg);
+    background-size: 50%;
+  }
+  90%{
+    background-image: url(./images/icon-spock.svg);
+    background-size: 70%;
+  }
 }

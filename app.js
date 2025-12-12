@@ -38,6 +38,9 @@ const bonusFields = document.querySelectorAll(".innerButtonBonus");
 let modeSwitch = true;
 afterWrapper.style.display = "none";
 
+//Button
+const playAgainBtn = document.getElementById('playAgainBtn')
+
 // Scoring
 let playerCount = parseInt(localStorage.getItem("playerScore")) || 0;
 const currentScore = document.getElementById("currentScore");
@@ -83,6 +86,8 @@ function checkWin(playerInput) {
     let computerChoice = rand();
     let playerChoice = parseInt(playerInput);
     let result = (playerChoice - computerChoice + 3) % 3;
+    resultSpan.innerHTML = ''
+    playAgainBtn.style.display = 'none'
 
     //removing existing classes from the buttons
     playerChoiceResult.classList.remove("blue", "yellow", "red");
@@ -90,7 +95,8 @@ function checkWin(playerInput) {
     computerChoiceResult.classList.remove("blue", "yellow", "red");
     computerChoiceButton.classList.remove("paper", "scissor", "rock");
 
-    //main switch
+    setTimeout(() => {
+      //main switch
     switch (result) {
       case 0:
         resultSpan.innerHTML = "Draw";
@@ -106,6 +112,9 @@ function checkWin(playerInput) {
         resultSpan.innerHTML = "You Lose";
         break;
     }
+    playAgainBtn.style.display = 'unset'
+    }, 1000);
+    
     //changes the button colors and inner images for the result page
     switch (computerChoice) {
       case 0:
@@ -238,9 +247,11 @@ function checkWinRPSLS(playerInput) {
     let computerChoice = rand(5);
     let playerChoice = parseInt(playerInput);
     let result = (playerChoice - computerChoice + 5) % 5;
-
+    resultSpan.innerHTML = ''
+    playAgainBtn.style.display = 'none'
     //main switch
-    switch (result) {
+    setTimeout(() => {
+      switch (result) {
       case 0:
         resultSpan.innerHTML = "Draw";
         break;
@@ -256,6 +267,9 @@ function checkWinRPSLS(playerInput) {
         resultSpan.innerHTML = "You Lose";
         break;
     }
+    playAgainBtn.style.display = 'unset'
+    }, 1500);
+    
   
     
     //removing existing classes from the buttons
@@ -361,8 +375,13 @@ function currentMode() {
     beforeWrapper.style.opacity = "1";
     bonusBeforeWrapper.style.display = "none";
     afterWrapper.style.display = "none";
-    leftScoreDiv.style.fontSize = "2rem";
+    leftScoreDiv.style.fontSize = "2.5rem";
     rulesOpen.style.backgroundImage = "url(./images/image-rules.svg)"
+    playerChoiceResult.style.animation = 'rpsOuterAnimation 1s'
+    playerChoiceButton.style.animation = 'rpsInnerAnimation 1s'
+    computerChoiceResult.style.animation = 'rpsOuterAnimation 1s'
+    computerChoiceButton.style.animation = 'rpsInnerAnimation 1s'
+    
   } else {
     beforeWrapper.style.display = "none";
     bonusBeforeWrapper.style.display = "grid";
@@ -370,5 +389,10 @@ function currentMode() {
     afterWrapper.style.display = "none";
     leftScoreDiv.style.fontSize = "1.5rem";
     rulesOpen.style.backgroundImage = "url(./images/image-rules-bonus.svg)"
+    playerChoiceResult.style.animation = 'rpslsOuterAnimation 1.5s'
+    playerChoiceButton.style.animation = 'rpslsInnerAnimation 1.5s'
+    computerChoiceResult.style.animation = 'rpslsOuterAnimation 1.5s'
+    computerChoiceButton.style.animation = 'rpslsInnerAnimation 1.5s'
+    
   }
 }
