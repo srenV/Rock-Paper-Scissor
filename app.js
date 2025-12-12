@@ -159,7 +159,7 @@ function playAgain() {
     beforeWrapper.style.opacity = "1";
     bonusBeforeWrapper.style.display = "none";
     afterWrapper.style.display = "none";
-    leftScoreDiv.style.fontSize = "2rem";
+    leftScoreDiv.style.fontSize = "2.5rem";
   } else {
     beforeWrapper.style.display = "none";
     bonusBeforeWrapper.style.display = "grid";
@@ -369,6 +369,8 @@ leftScoreDiv.addEventListener("click", () => {
   currentMode();
 });
 
+
+//Just a switch func to set some things
 function currentMode() {
   if (modeSwitch) {
     beforeWrapper.style.display = "grid";
